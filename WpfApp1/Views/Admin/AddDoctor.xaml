@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="WpfApp1.Views.Admin.AddDoctor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Views.Admin"
+             xmlns:viewModel="clr-namespace:WpfApp1.ViewModels.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="370" d:DesignWidth="610"
+             Background="Transparent">
+    <UserControl.DataContext>
+        <viewModel:AddDoctorVM/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="#FAFAFA"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#FAFAFA"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="CaretBrush" Value="#FAFAFA"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="Foreground" Value="#FAFAFA"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Margin="105 0 105 30">
+            <Label Content="User Name: "/>
+            <TextBox Name="UserNameTxtBox" Text="{Binding UserName}"/>
+            <Label Content="Name: "/>
+            <TextBox Name="NameTxtBox" Text="{Binding Name}"/>
+            <Label Content="Specialization: "/>
+            <TextBox Name="SpecializationTxtBox" Text="{Binding Specialization}"/>
+            <Label Content="User Password: "/>
+            <TextBox Name="PasswordTxtBox" Text="{Binding Password}"/>
+            <Button Name="UserSubmitButton" Margin="0 10 0 0" Command="{Binding SubmitNewDoctorCommand}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Border x:Name="ButtonSubmit" Height="30" Width="80" CornerRadius="15" BorderThickness="1.5" Background="#E91E63">
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#E91E63" Offset="0.0"/>
+                                        <GradientStop Color="#880E4F" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FAFAFA" Text="Submit" FontWeight="Bold" FontSize="10"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonSubmit" Property="Background" Value="#880E4F"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
